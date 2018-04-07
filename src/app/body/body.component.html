@@ -1,0 +1,85 @@
+
+<div class="w3-container">
+    <div class="w3-bar w3-round-large w3-margin-top w3-hover-border-blue" id="SearchGrp">
+        <input class="w3-bar-item" type="text"
+        id="SearchInput"
+        style="width:85%; height: 55px; font-size: 1.6rem;"
+        for="input"
+        placeholder="Search Your Favorite GIFs"
+        onkeypress="if (event.keyCode == 13)
+        document.getElementById('Search').click()"
+        #search>
+        <button class="w3-bar-item w3-button w3-blue w3-hover-purple"
+        type="button"
+        role="button"
+        id="Search"
+        (click)="onSearch(search)"
+        style="width:15%; height: 55px; font-size: 2rem;">
+        <b> <span class="fa fa-search"></span></b>
+        </button>
+    </div>
+</div>
+<hr>
+
+<h2 class="w3-center"><b>{{ Search_Query }}</b></h2>
+
+<app-loading *ngIf="loader"></app-loading>
+
+<div *ngIf="giphy" class="w3-container">
+
+  <!-- <div class="w3-row">
+      <div *ngFor="let g of giphy.data; let i = index"
+           class="w3-col s6 m3 l3"
+           style="margin-top:2%;" >
+              <div class="w3-display-container">
+                  <img [src]=g.images.original.url class="w3-img w3-round w3-border w3-card-4 w3-hover-grayscale" />
+                  <div class="w3-display-topright w3-display-hover w3-xlarge">
+                      <button class="w3-button w3-round"
+                      type="button"
+                      (click)="onAddFavorites(g.images.original.url)"
+                      ><span class="fa fa-heart w3-text-red"></span></button>
+                  </div>
+              </div>
+     </div>
+  </div> -->
+    <div class="masonry">
+      <div  *ngFor="let g of giphy.results; let i = index" class="w3-card w3-round-xlarge">
+          <!-- <img src="https://media.tenor.com/images/190f356c258fa2b47af107b3888013fa/tenor.gif" alt="" class="w3-card w3-round-xlarge" > -->
+          <img [src]=g.media[0].gif.url class="w3-card w3-round-xlarge" (click)="openModal(g.media[0].gif.url)" />
+      </div>
+    </div>
+
+  <app-loading *ngIf="moreLoader"></app-loading>
+
+  <div class="w3-container">
+      <div class="w3-container w3-center w3-margin-top">
+          <button class="w3-button w3-block w3-blue w3-round w3-hover-purple"
+              id="more-btn"
+              role="button"
+              (click)="onNext(search)"
+              >More</button>
+        </div>
+  </div>
+</div>
+
+<div class="modal" *ngIf=modal>
+
+    <div class="CloseButton">
+        <button (click)="onAddFavorites(modlaImage)" class="w3-btn w3-text-white"><span class="fa fa-bookmark"></span></button>
+        <button (click)="closeModal()" class="w3-btn w3-text-white">&times;</button>
+    </div>
+
+  <div class="content">
+    <img [src]=modlaImage alt="" class="w3-img">
+  </div>
+</div>
+
+<div class="w3-container w3-margin-top w3-card-2" id="footer">
+  <div class="w3-center w3-padding-32">
+    Developed By <a href="https://www.facebook.com/Mukeish.baghel"><strong class="w3-text-white">Mukeish Baghel</strong></a>
+    <br/>
+    Developed with <Strong class="w3-text-white">&copy; Angular</Strong>
+    Powered By <Strong class="w3-text-white">&copy; Tenor</Strong>
+  </div>
+</div>
+

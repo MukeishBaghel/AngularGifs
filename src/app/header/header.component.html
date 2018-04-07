@@ -1,0 +1,48 @@
+<!--
+<div class="w3-display-container w3-card-4 w3-padding" id="Head">
+  <div class="w3-bar">
+    <div class="w3-bar-item">
+      <a class="w3-hover-text-blue"
+      routerLink="/Trending"
+      *ngIf="!favorite_selector"
+      (click)="favorite_selector = true"
+      >
+        <span class="fa fa-arrow-left"></span></a>
+      </div>
+
+    <div class="w3-display-middle w3-bar-item">
+      <a href="#" id="brand">
+          <h1><b>FIPHY</b>
+          <small><sub><i>gifs</i></sub></small>
+          </h1>
+      </a>
+    </div>
+
+    <div class="w3-bar-item w3-display-right">
+      <a class="w3-button w3-text-yellow w3-round-large w3-hover-text-red w3-hover-none"
+        *ngIf="favorite_selector"
+        style="font-size:2.5rem;"
+         routerLink="/Favorites"
+        (click)="favorite_selector = false"
+      ><span class="fa fa-heart"></span><span class="w3-badge w3-tiny w3-red w3-hover-yellow">{{ favorites.length}}</span></a>
+    </div>
+  </div>
+</div>
+-->
+<div class="w3-bar w3-border w3-card-4 w3-purple w3-display-container" id="Head">
+    <a href="#" class="w3-bar-item w3-btn"
+    routerLink="/trending"
+    *ngIf="!favorite_selector"
+    (click)="favorite_selector = true"
+    style="margin:1em 1em;"
+    ><span class="fa fa-arrow-left"></span></a>
+    <a href="#" class="w3-bar-item w3-display-middle" id="BrandName">GIPHS</a>
+    <a href="#" class="w3-bar-item w3-btn w3-border w3-right w3-small"
+    routerLink="/favorites"
+    (click)="favorite_selector = false"
+    style="margin:9px 0; margin-right:1em;"
+    >Favorites &nbsp;<span
+    *ngIf="favorites.length"
+    style="background-color:red; padding:2px 4px;border-radius:100%;"
+    >{{ favorites.length}}</span></a>
+  </div>

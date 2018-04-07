@@ -1,0 +1,7 @@
+/* You can add global styles to this file, and also import other style files */
+/* @import './assets/Vendor/css/bootstrap-grid.min.css'; */
+@import './assets/Vendor/css/w3.css';
+
+* {
+  box-sizing: border-box;
+}
